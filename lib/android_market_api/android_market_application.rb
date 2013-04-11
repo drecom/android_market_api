@@ -43,7 +43,7 @@ class AndroidMarketApplication
     @icon=""              # Icon URL
     @screenshots=[]
     @update_text=""
-    parse_in_android_market
+    parse_in_android_market(options)
   end
 
   def print()
@@ -72,11 +72,11 @@ class AndroidMarketApplication
   ############################################
   # =>  Parse Default Page for your localization from Android Market
   ############################################
-  def parse_in_android_market
+  def parse_in_android_market(options)
 
     url="https://play.google.com/store/apps/details?id=#{@package}&hl=#{@language}"
     puts "Getting URL="+url if @@debug
-    doc = Hpricot(get_content(url))
+    doc = Hpricot(get_content(url, options))
     fill_current_version(doc.root)
     fill_rating_value(doc.root)
     fill_rating_count(doc.root)
