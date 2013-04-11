@@ -6,7 +6,7 @@ shared_context :use_stub_content do
     # override with stub reader
     module AndroidMarketApi
       module Util
-        def get_content(url)
+        def get_content(url, options={})
           case url
             when %r{https://play.google.com/store/apps/details}
               read_stub_file "apps_details.txt"

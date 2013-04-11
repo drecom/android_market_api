@@ -52,11 +52,11 @@ EOS
       end
 
       context "invalid proxy" do
-        subject { expect{ AndroidMarketApi::Util::get_content(url, options) } }
+        subject { AndroidMarketApi::Util::get_content(url, options) }
 
         let(:options) { {:proxy => "http://your.proxy.url/" } }
 
-        it{ should raise_error }
+        it{ expect{subject}.to raise_error }
       end
     end
   end
