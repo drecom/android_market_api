@@ -102,9 +102,9 @@ class AndroidMarket
     end
 
     private
-    CATEGORY_TOP_XPATH = "//div[@class='num-pagination-page']//li[@class='goog-inline-block' or @class='z-last-child']"
-    OVERALL_XPATH = "//div[@class='num-pagination-page']//li[@class='goog-inline-block' or @class='z-last-child']"
-    DEVELOPER_APP_XPATH = "li[@class='goog-inline-block']"
+    CATEGORY_TOP_XPATH = "//div[@class='card-list']/div"
+    OVERALL_XPATH = "//div[@class='card-list']/div"
+    DEVELOPER_APP_XPATH = "//div[@class='card-list']/div"
 
     def category_free_url(category, position, options)
       language = options[:language] || "en"
@@ -156,9 +156,11 @@ class AndroidMarket
     def get_apps_in_carousel(url, xpath, options)
       apps = []
       doc = Hpricot(get_content(url, options))
-      doc.search(xpath).each do |buy_div|
-        puts "Getting Application package "+buy_div.attributes['data-docid'] if @@debug
-        apps << AndroidMarketApplication.new(buy_div.attributes['data-docid'],options)
+      doc.search(xpath).each_with_index do |buy_div, i|
+        if i < APP_COUNT_IN_PAGE
+          puts "Getting Application package "+buy_div.attributes['data-docid'] if @@debug
+          apps << AndroidMarketApplication.new(buy_div.attributes['data-docid'],options)
+        end
       end
       apps
     end
