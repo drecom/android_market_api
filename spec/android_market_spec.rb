@@ -2,6 +2,11 @@
 require 'spec_helper'
 
 describe AndroidMarket do
+  before(:all) do
+    # for more than fast test!
+    AndroidMarket::APP_COUNT_IN_PAGE = 1
+  end
+
   describe "#get_application_categories" do
     subject { AndroidMarket.get_application_categories }
 
