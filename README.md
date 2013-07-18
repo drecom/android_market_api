@@ -172,3 +172,4 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 Contributions are welcome ! The project is mainly missing documentation and examples...
 
 
+
