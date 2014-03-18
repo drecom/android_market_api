@@ -20,7 +20,7 @@ EOS
   describe "#get_content" do
     subject { AndroidMarketApi::Util::get_content(url, options) }
 
-    let(:url) { "http://www.google.com/" }
+    let(:url) { "http://official.fdfp.drecom.jp/" }
 
     context "no options" do
       let(:options){ {} }
@@ -36,9 +36,9 @@ EOS
         }
       end
 
-      # if exists smartphone user-agent, get smartphone content from google
-      let(:google_smartphone_header){ %{<meta name="format-detection" content="address=no">} }
-      it{ should be_include google_smartphone_header }
+      # if exists smartphone user-agent, get smartphone content from server
+      let(:smartphone_header){ %{<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">} }
+      it{ should be_include smartphone_header }
     end
 
     context "exists proxy" do
