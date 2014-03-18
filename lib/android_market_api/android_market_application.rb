@@ -218,7 +218,7 @@ class AndroidMarketApplication
   def fill_developer_name(doc)
     element=doc.at("a[@class='document-subtitle primary']")
     if element
-      @developer_name=element.inner_text
+      @developer_name=element.inner_text.strip
       puts "Application Author= "+@developer_name.to_s if @@debug
     end
   end
