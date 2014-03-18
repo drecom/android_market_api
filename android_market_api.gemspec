@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   #
   # development dependencies
   #
-  s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec", "~> 2.14.1"
   s.add_development_dependency "pry"
   s.add_development_dependency "pry-nav"
   s.add_development_dependency "coveralls"
