@@ -167,8 +167,8 @@ class AndroidMarketApplication
     element=doc.at("a[@class='document-subtitle category']")
     if element
       category_url = element['href']
-      array = category_url.scan %r{/store/apps/category/(.+)$}
-      @category_id = array[0][0]
+      category_url =~ %r{/store/apps/category/(.+)$}
+      @category_id = $1 if $1
       puts "Application category id="+@category_id.to_s   if @@debug
     end
   end
