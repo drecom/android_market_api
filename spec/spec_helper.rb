@@ -3,6 +3,7 @@
 require "android_market_api"
 require "rspec"
 require "pry"
+require "rspec-parameterized"
 
 require 'coveralls'
 Coveralls.wear!

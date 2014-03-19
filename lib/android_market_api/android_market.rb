@@ -13,9 +13,69 @@ require File.expand_path(File.dirname(__FILE__) + "/android_market_application")
 
 class AndroidMarket
 
-  @@game_categories=Array.[]('ARCADE','BRAIN','CARDS','CASUAL','GAME_WALLPAPER','RACING','SPORTS_GAMES','GAME_WIDGETS')
-  @@application_categories=Array.[]('BOOKS_AND_REFERENCE','BUSINESS','COMICS','COMMUNICATION','EDUCATION','ENTERTAINMENT','FINANCE','HEALTH_AND_FITNESS','LIBRARIES_AND_DEMO','LIFESTYLE','APP_WALLPAPER','MEDIA_AND_VIDEO','MEDICAL','MUSIC_AND_AUDIO','NEWS_AND_MAGAZINES','PERSONALIZATION','PHOTOGRAPHY','PRODUCTIVITY','SHOPPING','SOCIAL','SPORTS','TOOLS','TRANSPORTATION','TRAVEL_AND_LOCAL','WEATHER','APP_WIDGETS')
-  @@languages=Array.[]('en','pt_PT','pt_BR','es','es_419','fr','it','es')
+  GAME_CATEGORIES = %w(
+    GAME
+    GAME_ACTION
+    GAME_ADVENTURE
+    GAME_ARCADE
+    GAME_WIDGETS
+    GAME_CASINO
+    GAME_CASUAL
+    GAME_CARD
+    GAME_SIMULATION
+    GAME_STRATEGY
+    GAME_SPORTS
+    GAME_PUZZLE
+    GAME_FAMILY
+    GAME_BOARD
+    GAME_WALLPAPER
+    GAME_RACING
+    GAME_ROLE_PLAYING
+    GAME_EDUCATIONAL
+    GAME_WORD
+    GAME_TRIVIA
+    GAME_MUSIC
+  )
+
+  APPLICATION_CATEGORIES = %w(
+    APP_WIDGETS
+    ENTERTAINMENT
+    PERSONALIZATION
+    COMICS
+    SHOPPING
+    SPORTS
+    SOCIAL
+    TOOLS
+    NEWS_AND_MAGAZINES
+    BUSINESS
+    FINANCE
+    MEDIA_AND_VIDEO
+    LIFESTYLE
+    LIBRARIES_AND_DEMO
+    APP_WALLPAPER
+    TRANSPORTATION
+    PRODUCTIVITY
+    HEALTH_AND_FITNESS
+    PHOTOGRAPHY
+    MEDICAL
+    WEATHER
+    EDUCATION
+    TRAVEL_AND_LOCAL
+    BOOKS_AND_REFERENCE
+    COMMUNICATION
+    MUSIC_AND_AUDIO
+  )
+
+  LANGUAGES = %w(
+    en
+    pt_PT
+    pt_BR
+    es
+    es_419
+    fr
+    it
+    es
+  )
 
   @@debug=false
 
@@ -83,18 +143,6 @@ class AndroidMarket
 
     def get_developer_app_list(developer_name, position, options={})
       get_apps_in_carousel(developer_app_url(developer_name, position, options), DEVELOPER_APP_XPATH, options)
-    end
-
-    def get_languages()
-      return @@languages
-    end
-
-    def get_game_categories()
-      return @@game_categories
-    end
-
-    def get_application_categories()
-      return @@application_categories
     end
 
     def debug=(is_debug)
