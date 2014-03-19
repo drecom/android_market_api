@@ -147,6 +147,7 @@ class AndroidMarket
     end
 
     def get_app_in_carousel(url, xpath, options)
+      puts "Getting URL="+url if @@debug
       doc = Hpricot(get_content(url, options))
       buy_div=doc.search(xpath).first
       puts "Getting Application package "+buy_div.attributes['data-docid'] if @@debug
@@ -155,6 +156,7 @@ class AndroidMarket
 
     def get_apps_in_carousel(url, xpath, options)
       apps = []
+      puts "Getting URL="+url if @@debug
       doc = Hpricot(get_content(url, options))
       doc.search(xpath).each_with_index do |buy_div, i|
         if i < APP_COUNT_IN_PAGE
