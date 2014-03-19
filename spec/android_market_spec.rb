@@ -25,12 +25,52 @@ describe AndroidMarket do
       subject { AndroidMarket.get_top_selling_free_app_in_category(category, position, options) }
 
       it{ should be_an_instance_of AndroidMarketApplication }
+
+      context "each GAME_CATEGORIES" do
+        where(:category) do
+          AndroidMarket::GAME_CATEGORIES.product
+        end
+
+        with_them do
+          it{ should be_an_instance_of AndroidMarketApplication }
+        end
+      end
+
+      context "each APPLICATION_CATEGORIES" do
+        where(:category) do
+          AndroidMarket::APPLICATION_CATEGORIES.product
+        end
+
+        with_them do
+          it{ should be_an_instance_of AndroidMarketApplication }
+        end
+      end
     end
 
     describe "#get_top_selling_paid_app_in_category" do
       subject { AndroidMarket.get_top_selling_paid_app_in_category(category, position, options) }
 
       it{ should be_an_instance_of AndroidMarketApplication }
+
+      context "each GAME_CATEGORIES" do
+        where(:category) do
+          AndroidMarket::GAME_CATEGORIES.product
+        end
+
+        with_them do
+          it{ should be_an_instance_of AndroidMarketApplication }
+        end
+      end
+
+      context "each APPLICATION_CATEGORIES" do
+        where(:category) do
+          AndroidMarket::APPLICATION_CATEGORIES.product
+        end
+
+        with_them do
+          it{ should be_an_instance_of AndroidMarketApplication }
+        end
+      end
     end
 
     describe "#get_overall_top_selling_free_app" do
@@ -179,6 +219,38 @@ describe AndroidMarket do
         subject(:get_app){ :get_overall_top_selling_new_free_app }
 
         it{ app1.package.should_not == app2.package }
+      end
+    end
+  end
+
+  describe "GAME_CATEGORIES", :content => "real" do
+    where(:category) do
+      AndroidMarket::GAME_CATEGORIES.inject([]){|array, category| array << [category]; array }
+    end
+
+    with_them do
+      it "get_top_selling_free_app_in_category should be success" do
+        AndroidMarket.get_top_selling_free_app_in_category(category, position)
+      end
+
+      it "get_top_selling_paid_app_in_category should be success" do
+        AndroidMarket.get_top_selling_paid_app_in_category(category, position)
+      end
+    end
+  end
+
+  describe "APPLICATION_CATEGORIES", :content => "real" do
+    where(:category) do
+      AndroidMarket::APPLICATION_CATEGORIES.inject([]){|array, category| array << [category]; array }
+    end
+
+    with_them do
+      it "get_top_selling_free_app_in_category should be success" do
+        AndroidMarket.get_top_selling_free_app_in_category(category, position)
+      end
+
+      it "get_top_selling_paid_app_in_category should be success" do
+        AndroidMarket.get_top_selling_paid_app_in_category(category, position)
       end
     end
   end
