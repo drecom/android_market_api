@@ -21,6 +21,10 @@ module AndroidMarketApi
         header[name] = options[name] if options[name]
       end
       open(url, header).read
+    rescue OpenURI::HTTPError => e
+      e.message =~ /^([0-9]{3})/
+      status_code = $1
+      raise AndroidMarketApi::HTTPError.new("#{e.message} #{url}", :status_code => status_code, :url => url, :cause => e)
     end
 
     module_function :get_content

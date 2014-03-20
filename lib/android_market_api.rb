@@ -5,3 +5,4 @@ require File.expand_path(File.dirname(__FILE__) + "/android_market_api/android_m
 require File.expand_path(File.dirname(__FILE__) + "/android_market_api/version")
 require File.expand_path(File.dirname(__FILE__) + "/android_market_api/android_market")
 require File.expand_path(File.dirname(__FILE__) + "/android_market_api/util")
+require File.expand_path(File.dirname(__FILE__) + "/android_market_api/errors")

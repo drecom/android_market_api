@@ -59,5 +59,12 @@ EOS
         it{ expect{subject}.to raise_error }
       end
     end
+
+    context "invalid url" do
+      let(:url){ "http://google.com/fooooooooooo" }
+      let(:options){ {} }
+
+      it{ expect{ subject }.to raise_error AndroidMarketApi::HTTPError, "404 Not Found http://google.com/fooooooooooo" }
+    end
   end
 end
