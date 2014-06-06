@@ -7,8 +7,8 @@ shared_context :save_content do
   before(:all) do
     module AndroidMarketApi
       module Util
-        def get_and_save_content(url)
-          content = orig_get_content(url)
+        def get_and_save_content(url, options = {})
+          content = orig_get_content(url, options)
 
           dist_dir = File.expand_path(File.dirname(__FILE__) + "/../../tmp")
           FileUtils.makedirs(dist_dir)
